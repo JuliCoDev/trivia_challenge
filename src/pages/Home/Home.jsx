@@ -7,7 +7,7 @@ const Home = () =>{
             <h1>Welcome to trivia challenge</h1>
             <p>Can you sore 100%?</p>
             <button>
-                Start!
+                <a href='/questions'>Start!</a>
             </button>
         </div>        
     )
