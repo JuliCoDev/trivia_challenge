@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { questions } from "../../services/questions"
+import Score from "../Score/Score";
 import styles from "./css/question.module.css"
 const Questions = () =>{
     const [listQuestion , setListQuestion ] = useState([]);
     const [numberQuestion , setNumberQuestion] = useState(0);
+    const [answersUser, setAnswersUser] = useState([]);
 
 
     useEffect(() =>{
@@ -15,7 +17,8 @@ const Questions = () =>{
 
 
     //Change the number of current question
-    const handleQuestion = () =>{
+    const handleQuestion = (target) =>{
+        setAnswersUser(answersUser=> [...answersUser , target.value])
         setNumberQuestion(numberQuestion => numberQuestion + 1);
     } 
 
@@ -26,7 +29,7 @@ const Questions = () =>{
             answers.sort().map((answer , index) =>{
                 return (
                     <div key={index}>
-                        <button  onClick={() => handleQuestion()}>{answer}</button>
+                        <button value={answer} onClick={(e) => handleQuestion(e.target)}>{answer}</button>
                     </div>
                 )
             })
@@ -36,6 +39,7 @@ const Questions = () =>{
     //Id te questios are ready these show
     if(listQuestion.length > 0 && numberQuestion < listQuestion.length){
         const {category, question , correctAnswer, incorrectAnswers} = listQuestion[numberQuestion];
+        //Create new array to show all options answers
         const totalAnswers = [...incorrectAnswers , correctAnswer];
         return(           
             <div className={styles.cardQuestion}>
@@ -46,7 +50,7 @@ const Questions = () =>{
         )
     }else if(listQuestion.length > 0 && numberQuestion >= listQuestion.length){
         return (
-            <h1>SCORE</h1>
+            <Score infoQuestions={listQuestion} answersUser={answersUser}/>
         )
     }
     
