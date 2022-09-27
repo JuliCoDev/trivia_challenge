@@ -1,0 +1,18 @@
+.container{
+    width: 90%;
+    margin: 30px auto;
+}
+
+.score{
+    display: flex;
+    margin: 20px auto;
+    text-align: center;
+    align-items: center;
+    background-image: url('../../../assets/score.gif');
+    height : 200px;
+    width : 200px;
+    border-radius : 100%; 
+}
+.score > h1{
+    width: 100%;
+}

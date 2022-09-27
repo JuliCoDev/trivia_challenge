@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
+import styles from './css/Score.module.css' 
 
 const style =  (isCorrect) =>{
     return({
-        backgroundColor : (isCorrect) ? '#0bad0061' : '#ff5050d9',
+        backgroundColor : (isCorrect) ? '#0cad00b4' : '#ff5050d9',
         marginBottom : '10px',                      
         borderRadius : '10px',
-        paddingLeft :'10px'
+        paddingLeft :'10px',
+        fontSize : '1.1em',
+        padding : '15px'
     })
 }
 
@@ -59,7 +62,17 @@ const Score = (props) =>{
 
 
     return(
-        <div>
+        <div className={styles.container}>
+            {/* points obtained from N possible */}
+            <div  className={styles.score}>
+                <h1>             
+                    SCORE
+                    {` ${numberCorrectAnswers}/${infoQuestions.length} `}
+                </h1>
+            </div>
+                 
+
+            {/* Show your incorrects and your correct answers */}
             {feedback.map(item => {
                 const {question, id, answer, correctAnswer, isCorrect} = item;
                 
@@ -68,15 +81,17 @@ const Score = (props) =>{
                         key={id}
                         style={style(isCorrect)}      
                     >
-                        <h3>{question}</h3>
+                        <h4>{question}</h4>
                         <p>{answer}</p>
-                        <p>{correctAnswer}</p>
+                        {/* <p>{correctAnswer}</p> */}
                     </div>
                 )
             })
             
             }
-             <h1>SCORE{` ${numberCorrectAnswers} / ${infoQuestions.length} `}</h1>
+            <button>
+                <a href='/questions'>Start Again!</a>
+            </button>
         </div>
         
     )
