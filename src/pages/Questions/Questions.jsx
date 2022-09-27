@@ -30,7 +30,7 @@ const Questions = () =>{
         return(
             answers.sort().map((answer , index) =>{
                 return (
-                    <div key={index}>
+                    <div className={styles.answer} key={index}>
                         <button value={answer} onClick={(e) => handleQuestion(e.target)}>{answer}</button>
                     </div>
                 )
