@@ -4,6 +4,12 @@
   text-decoration: none;
 }
 
+@font-face {
+  font-family: "Showcard Gothic";
+  src: url('./assets/fonts/SHOWG.TTF');
+}
+
+
 .App {
   text-align: center;
 }

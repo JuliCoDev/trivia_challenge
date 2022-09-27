@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import Loading from "../../components/Loading/Loading";
 import { questions } from "../../services/questions"
 import Score from "../Score/Score";
 import styles from "./css/question.module.css"
+import Title from "../../components/Title";
 const Questions = () =>{
     const [listQuestion , setListQuestion ] = useState([]);
     const [numberQuestion , setNumberQuestion] = useState(0);
@@ -36,6 +38,7 @@ const Questions = () =>{
         )        
     }
 
+
     //Id te questios are ready these show
     if(listQuestion.length > 0 && numberQuestion < listQuestion.length){
         const {category, question , correctAnswer, incorrectAnswers} = listQuestion[numberQuestion];
@@ -43,8 +46,10 @@ const Questions = () =>{
         const totalAnswers = [...incorrectAnswers , correctAnswer];
         return(           
             <div className={styles.cardQuestion}>
-                <h1>{category}</h1>
-                <p>{question}</p> 
+                <Title title={category} style="title-blue"/>
+                <div className={styles.question}>
+                    <p>{question}</p> 
+                </div>
                 {showAnswers(totalAnswers)}
             </div>
         )
@@ -56,7 +61,7 @@ const Questions = () =>{
     
 
     return(
-        <h1>CARGANDO...</h1>
+        <Loading/>
     )
     
 }

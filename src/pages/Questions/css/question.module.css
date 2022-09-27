@@ -1,12 +1,28 @@
 .cardQuestion{
-    margin: 50% auto;
+    margin: 50px auto;
     width: 80%;    
-    padding: 10px 30px;
-    border-radius: 15px;
     text-align: center;
     background-color: white;
+    background-image: url('../../../assets/backgroun-questions.jpg');
+    height: 600px;
+    background-size: cover;
 }
 
+.question{
+    height: 210px;
+    width: 90%;
+    margin: auto;
+    background-image: url('../../../assets/pergamino-questions.png');;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.question > p{
+    max-width: 280px;
+    margin: auto;
+}
 @media (width > 600px) {
     .cardQuestion{ 
         margin: 30px auto;
